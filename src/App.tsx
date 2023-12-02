@@ -63,9 +63,15 @@ export default function MyApp() {
             }
         }, {})
         rankedProblems.forEach((problem: any) => {
-            trophiesById[problem[0].member.id]['gold'] += 1
-            trophiesById[problem[1].member.id]['silver'] += 1
-            trophiesById[problem[2].member.id]['bronze'] += 1
+            if (problem.length > 0) {
+                trophiesById[problem[0].member.id]['gold'] += 1
+            }
+            if (problem.length > 1) {
+                trophiesById[problem[1].member.id]['silver'] += 1
+            }
+            if (problem.length > 2) {
+                trophiesById[problem[2].member.id]['bronze'] += 1
+            }
         })
 
         members.sort((a: any, b: any) => b.local_score - a.local_score)

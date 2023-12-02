@@ -1,4 +1,4 @@
-import { Avatar, Card, CardContent, CardHeader, Typography, ListItem, CardActions, Button } from '@mui/material';
+import { Avatar, Card, CardContent, CardHeader, Typography, ListItem, CardActions, Button, Stack } from '@mui/material';
 import RestoreIcon from '@mui/icons-material/Restore';
 import TrophyIcon from '@mui/icons-material/EmojiEvents';
 import StarIcon from '@mui/icons-material/Star';
@@ -68,17 +68,25 @@ export default function RankingCard({ ranking, rank }: { ranking: any, rank: num
                 subheader={ranking.local_score > 0 ? `#${rank}` : "Not started yet"}
             />
             <CardContent>
-                <Typography variant="body2">
-                    <TimelineIcon color="warning" sx={{ verticalAlign: "middle" }} /> {ranking.local_score} points
-                </Typography>
-                <Typography variant="body2">
-                    <StarIcon color="warning" sx={{ verticalAlign: "middle" }} /> {ranking.stars} stars
-                </Typography>
-                <Typography variant="body2">
-                    <TrophyIcon color="warning" sx={{ verticalAlign: "middle" }} /> {ranking.trophies.gold}
-                    <TrophyIcon sx={{ verticalAlign: "middle", color: "#C0C0C0" }} /> {ranking.trophies.silver}
-                    <TrophyIcon sx={{ verticalAlign: "middle", color: "#cd7f32" }} /> {ranking.trophies.bronze}
-                </Typography>
+                <Stack direction="row" spacing={2}>
+                    <Typography variant="body2">
+                        <TimelineIcon color="warning" sx={{ verticalAlign: "middle" }} /> {ranking.local_score} points
+                    </Typography>
+                    <Typography variant="body2">
+                        <StarIcon color="warning" sx={{ verticalAlign: "middle" }} /> {ranking.stars} stars
+                    </Typography>
+                </Stack>
+                <Stack direction="row" spacing={2}>
+                    <Typography variant="body2">
+                        <TrophyIcon color="warning" sx={{ verticalAlign: "middle" }} /> {ranking.trophies.gold}
+                    </Typography>
+                    <Typography variant="body2">
+                        <TrophyIcon sx={{ verticalAlign: "middle", color: "#C0C0C0" }} /> {ranking.trophies.silver}
+                    </Typography>
+                    <Typography variant="body2">
+                        <TrophyIcon sx={{ verticalAlign: "middle", color: "#cd7f32" }} /> {ranking.trophies.bronze}
+                    </Typography>
+                </Stack>
                 <Typography variant="body2">
                     <RestoreIcon color="success" sx={{ verticalAlign: "middle" }} /> Latest solved: {moment(ranking.last_star_ts * 1000).fromNow()}
                 </Typography>
